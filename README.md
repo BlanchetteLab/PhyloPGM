@@ -19,6 +19,9 @@
 ### Train RNATracker
 
 ### RNATracker Predictions
+`python RNATracker/predict_rnatracker.py toy-data/ortho-val-100 toy-data/base_model.pth toy-data/pred-ortho-val-100`
+
+`python RNATracker/predict_rnatracker.py toy-data/ortho-test-100 toy-data/base_model.pth toy-data/pred-ortho-test-100`
 
 ### Compute PhyloPGM Scores
 
