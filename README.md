@@ -1,6 +1,10 @@
 # PhyloPGM
 
+![plot](workflow-phylopgm.pdf)
+
+
 ## Requirements
+`pip install -r requirements.txt`
 
 ## TFBS Prediction Problem
 
