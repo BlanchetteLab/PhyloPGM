@@ -1,6 +1,6 @@
 # PhyloPGM
 
-![plot](workflow-phylopgm.pdf)
+![SCREENSHOT](workflow-phylopgm.pdf)
 
 
 ## Requirements
