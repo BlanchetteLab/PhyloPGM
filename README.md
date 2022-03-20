@@ -7,10 +7,13 @@
 `pip install -r requirements.txt`
 
 ## TFBS Prediction Problem
-The goal is to improve the prediction accuracy of a previously trained TFBS predictor on human using orthologous data.
+The goal is to improve the prediction accuracy of a previously trained TFBS predictor on human using orthologous data. Due to vast amount of data size, we do not provide the prediction scores from our TFBS prediction experiments in this repo.
 
 
 ### Data Preparation
+
+Please note that the data used in our experiments for the TFBS prediction problem is huge and is not possible to provide the processed data in our github repo. Please follow the instructions below to prepare the data that we used in our TFBS prediction experiments.
+
 1. Download data for "within-cell type" problem of ENCODE-DREAM in vivo Transcription Factor Binding Site Prediction Challenge
    https://www.synapse.org/#!Synapse:syn6131484/wiki/402026
 
@@ -72,9 +75,10 @@ The above command trains a multilayer perceptron on the orthologous prediction s
 
 ## RNA-RBP Binding Prediction Problem
 
-The goal is to improve the prediction accuracy of a previously trained RNA-RBP binding predictor on human using orthologous data.
+The goal is to improve the prediction accuracy of a previously trained RNA-RBP binding predictor on human using orthologous data. We provide the trained base models `models.rnatracker.tar.gz` and PhyloPGM prediction scores `rnatracker-phylopgm-predictions.tar.gz` in this repo.
 
 ### Data Preparation
+Please note that the data used in our RNA-RBP binding prediction experiments is huge. Please follow the instructions below to prepare the data
 
 1. We use the CLIP-seq data of 31 RNA-RBP binding experiments curated by Strazar et. al. 2016.
    https://github.com/mstrazar/iONMF/tree/master_full/datasets/clip
