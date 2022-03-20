@@ -67,7 +67,7 @@ PhyloPGM combines the orthologous prediction scores to improve the prediction ac
 
 `python PhyloStackNN/run_phylostacknn.py --validate-data toy-data/df-pred-chipseq-ortho-val.csv  --test-data toy-data/df-pred-chipseq-ortho-test.csv --output-fname toy-data/df-chipseq-stack.csv`
 
-The above command trains a multilayer perceptron on the orthologous prediction scores in `toy-data/df-pred-ortho-val-100` dataset and the trained model combines the prediction scores in `toy-data/df-pred-ortho-test-100` dataset.
+The above command trains a multilayer perceptron on the orthologous prediction scores in `toy-data/df-pred-chipseq-ortho-val.csv` dataset and the trained model combines the prediction scores in `toy-data/df-pred-chipseq-ortho-test.csv` dataset.
 
 
 ## RNA-RBP Binding Prediction Problem
