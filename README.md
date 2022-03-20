@@ -67,9 +67,20 @@ PhyloPGM combines the orthologous prediction scores to improve the prediction ac
 
 ## RNA-RBP Binding Prediction Problem
 
+The goal is to improve the prediction accuracy of a previously trained RNA-RBP binding predictor on human using orthologous data.
+
 ### Data Preparation
 
+1. We use the CLIP-seq data of 31 RNA-RBP binding experiments curated by Strazar et. al. 2016.
+   https://github.com/mstrazar/iONMF/tree/master_full/datasets/clip
+2. In order to retrieve orthologous regions, we first convert sequences from hg19 human reference genome to hg38 human reference using liftOver.
+3. Use mafsInRegion program (https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/mafsInRegion) to extract orthologous regions from a 100-way vertebrate whole-genome alignment available from the UCSC Genome browser (Kent et. al. 2002) and computationally predicted ancestral sequences produced by Ancestor1.0 (Diallo et. al. 2009)
+4. Ignore orthologous regions whose length is less than 70 bps. 
+5. Symmetrically trim or extend orthologous regions to make input example of 101 bp.
+
+
 ### Train RNATracker
+
 
 ### RNATracker Predictions
 `python RNATracker/predict_rnatracker.py toy-data/ortho-val-100 toy-data/base_model.pth toy-data/pred-ortho-val-100`
