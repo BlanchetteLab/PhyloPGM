@@ -59,10 +59,15 @@ Now, we can run PhyloPGM script to compute the final PhyloPGM predictions. Below
 
 `python PhyloPGM/run_PhyloPGM.py toy-data/df-pred-chipseq-ortho-val.csv toy-data/df-pred-chipseq-ortho-test.csv PhyloPGM/tree.pkl toy-data/df-pgm-100`
 
+The above command computes PhyloPGM scores for each human example in the `toy-data/df-pred-chipseq-ortho-test.csv` dataset.
+
+
 ### Compute PhyloStackNN Scores
 PhyloPGM combines the orthologous prediction scores to improve the prediction accuracy on human. Alternatively, We can stack a multilayer perceptron on the orthologous prediction scores to obtain a combined prediction. Below is an example of training such a model. 
 
 `python PhyloStackNN/run_phylostacknn.py --validate-data toy-data/df-pred-chipseq-ortho-val.csv  --test-data toy-data/df-pred-chipseq-ortho-test.csv --output-fname toy-data/df-chipseq-stack.csv`
+
+The above command trains a multilayer perceptron on the orthologous prediction scores in `toy-data/df-pred-chipseq-ortho-val.csv` dataset and the trained model combines the prediction scores in `toy-data/df-pred-chipseq-ortho-test.csv` dataset.
 
 
 ## RNA-RBP Binding Prediction Problem
@@ -80,25 +85,50 @@ The goal is to improve the prediction accuracy of a previously trained RNA-RBP b
 
 
 ### Train RNATracker
+We can train a RNATracker model using the script `train_rnatracker.py`. Below is an example to train a RNATracker model
+
+`time python RNATracker/train_rnatracker.py toy-data/ortho-val-100 toy-data/toy_model.pth`
 
 
 ### RNATracker Predictions
+
+We can predict on orthologous regions using a trained RNATracker model. Below are two examples that will be later used in PhyloPGM pipeline
+
 `python RNATracker/predict_rnatracker.py toy-data/ortho-val-100 toy-data/base_model.pth toy-data/pred-ortho-val-100`
 
 `python RNATracker/predict_rnatracker.py toy-data/ortho-test-100 toy-data/base_model.pth toy-data/pred-ortho-test-100`
 
 ### Compute PhyloPGM Scores
+
+We need to prepare input for the PhyloPGM computation using the predicted scores on the orthologous regions. Below are two examples,
+
 `python PhyloPGM/create_PhyloPGM_input.py toy-data/pred-ortho-val-100 toy-data/df-pred-ortho-val-100 PhyloPGM/tree.pkl 1000`
 
 `python PhyloPGM/create_PhyloPGM_input.py toy-data/pred-ortho-test-100 toy-data/df-pred-ortho-test-100 PhyloPGM/tree.pkl 1000`
 
+Now, we can run PhyloPGM on the inputs to obtain the final PhyloPGM scores. Below is an example
+
 `python PhyloPGM/run_PhyloPGM.py toy-data/df-pred-ortho-val-100 toy-data/df-pred-ortho-test-100 PhyloPGM/tree.pkl toy-data/df-clipseq-pgm-100`
 
+The above command computes PhyloPGM scores for each human example in the `toy-data/df-pred-ortho-test-100` dataset.
+
 ### Compute PhyloStackNN Scores
+
+Alternatively, we can combine the orthologous prediction scores using a multilayer perceptron. Below is an example,
+
 `python PhyloStackNN/run_phylostacknn.py --validate-data toy-data/df-pred-ortho-val-100  --test-data toy-data/df-pred-ortho-test-100 --output-fname toy-data/df-clipseq-stack.csv`
+
+The above command trains a multilayer perceptron on the orthologous prediction scores in `toy-data/df-pred-ortho-val-100` dataset and the trained model combines the prediction scores in `toy-data/df-pred-ortho-test-100` dataset.
+
 
 ## Putative Functional Sites Analysis
 
+We consider the TF/RBP binding sites as putativelu functional if they overlap with
+1. the non-coding portion of the ClinVar database (Landrum et al., 2016), which human mutations associated to diseases 
+2. the non-coding human variants linked to phenotypic consequences through several publications (Biggs et al., 2020) 
+3. the list of deleterious non-coding variants identified through machine learning and other computational techniques (Wells et al., 2019)
+
+The above three data sets are combined in `nc-clinVar.bed`.
 
 
 
