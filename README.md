@@ -123,6 +123,12 @@ The above command trains a multilayer perceptron on the orthologous prediction s
 
 ## Putative Functional Sites Analysis
 
+We consider the TF/RBP binding sites as putativelu functional if they overlap with
+1. the non-coding portion of the ClinVar database (Landrum et al., 2016), which human mutations associated to diseases 
+2. the non-coding human variants linked to phenotypic consequences through several publications (Biggs et al., 2020) 
+3. the list of deleterious non-coding variants identified through machine learning and other computational techniques (Wells et al., 2019)
+
+The above three data sets are combined in `nc-clinVar.bed`.
 
 
 
