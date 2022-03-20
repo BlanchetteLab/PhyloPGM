@@ -28,7 +28,7 @@ The goal is to improve the prediction accuracy of a previously trained TFBS pred
 
 
 ### Train FactorNet
-We can use the script `train_factornet.py` to train a FactorNet model. Below is an example to run the script
+We can use the script `train_factornet.py` to train a FactorNet (Quang and Xie, 2019) model. Below is an example to run the script
 
 `python FactorNet/train_factornet.py toy-data/chipseq-ortho-test.csv toy-data/chipseq-ortho-test.csv toy-data/chipseq-ortho-test.csv  2 10 toy-data/model-trial.pth`
 
@@ -85,7 +85,7 @@ The goal is to improve the prediction accuracy of a previously trained RNA-RBP b
 
 
 ### Train RNATracker
-We can train a RNATracker model using the script `train_rnatracker.py`. Below is an example to train a RNATracker model
+We can train a RNATracker (Yan et al. 2019)  model using the script `train_rnatracker.py`. Below is an example to train a RNATracker model
 
 `time python RNATracker/train_rnatracker.py toy-data/ortho-val-100 toy-data/toy_model.pth`
 
@@ -129,6 +129,19 @@ We consider the TF/RBP binding sites as putativelu functional if they overlap wi
 3. the list of deleterious non-coding variants identified through machine learning and other computational techniques (Wells et al., 2019)
 
 The above three data sets are combined in `nc-clinVar.bed`.
+
+## References
+
+1. Quang, D. and Xie, X. (2019). Factornet: a deep learning framework for predicting cell type specific transcription factor binding from nucleotide-resolution sequential data. Methods, 166, 40–47.
+2. Yan, Z. C., Lecuyer, E., and Blanchette, M. (2019). Prediction of mrna subcellular localization using deep recurrent neural networks. Bioinformatics, 35(14), I333–I342.
+3. Landrum, M. J., Lee, J. M., Benson, M., Brown, G., Chao, C., Chitipiralla, S., Gu, B., Hart, J., Hoffman, D., Hoover, J., et al. (2016). Clinvar: public archive of interpretations of clinically relevant variants. Nucleic acids research, 44(D1), D862–D868.
+4. Biggs, H., Parthasarathy, P., Gavryushkina, A., and Gardner, P. P. (2020). ncvardb: a manually curated database for pathogenic non-coding variants and benign controls. Database, 2020.
+5. Wells, A., Heckerman, D., Torkamani, A., Yin, L., Sebat, J., Ren, B., Telenti, A., and di Iulio, J. (2019). Ranking of non-coding pathogenic variants and putative essential regions of the human genome. Nature communications, 10(1), 1–9.
+6. Kent, W. J., Sugnet, C. W., Furey, T. S., Roskin, K. M., Pringle, T. H., Zahler, A. M., and Haussler, D. (2002). The human genome browser at ucsc. Genome research, 12(6), 996–1006.
+7. Diallo, A. B., Makarenkov, V., and Blanchette, M. (2009). Ancestors 1.0: a web server for ancestral sequence reconstruction. Bioinformatics, 26(1), 130–131.
+8. Strazar, M., Zitnik, M., Zupan, B., Ule, J., and Curk, T. (2016). Orthogonal matrix factorization enables integrative analysis of multiple RNA binding proteins. Bioinformatics, 32(10), 1527–1535.
+
+
 
 
 
